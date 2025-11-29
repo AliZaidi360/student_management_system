@@ -1,1 +1,12 @@
+# Windows junk
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
+
+# Ignore all SQL files except this one
+*.sql
+!database.sql
+
 
