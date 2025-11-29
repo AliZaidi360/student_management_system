@@ -62,11 +62,12 @@ Start these services:
 ### 2️⃣ Import the Database
 1. Open **phpMyAdmin**  
 2. Create a database named:  
-   `student managment`  
+   `student_managment`  
 3. Import **database.sql**
 
 ### 3️⃣ Run the Project
 Open your browser and go to:
+
 
 
 
