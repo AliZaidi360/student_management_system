@@ -22,20 +22,6 @@ $attendance_count = $conn->query("SELECT COUNT(*) as count FROM attendance WHERE
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <i class="fas fa-graduation-cap"></i> SMS
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.php" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li><a href="php/view_students.php"><i class="fas fa-user-graduate"></i> Students</a></li>
-                <li><a href="php/add_course.php"><i class="fas fa-book"></i> Courses</a></li>
-                <li><a href="php/attendance.php"><i class="fas fa-calendar-check"></i> Attendance</a></li>
-            </ul>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="header">
-                <h1 class="page-title">Dashboard</h1>
                 <div class="user-profile">
                     <span>Admin</span>
                 </div>
@@ -67,7 +53,7 @@ $attendance_count = $conn->query("SELECT COUNT(*) as count FROM attendance WHERE
                         Attendance</a>
                 </div>
             </div>
-        </main>
+            </main>
     </div>
 </body>
 

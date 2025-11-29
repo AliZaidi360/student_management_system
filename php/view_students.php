@@ -21,20 +21,6 @@ $result = $conn->query($sql);
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <i class="fas fa-graduation-cap"></i> SMS
-            </div>
-            <ul class="nav-links">
-                <li><a href="../index.php"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li><a href="view_students.php" class="active"><i class="fas fa-user-graduate"></i> Students</a></li>
-                <li><a href="add_course.php"><i class="fas fa-book"></i> Courses</a></li>
-                <li><a href="attendance.php"><i class="fas fa-calendar-check"></i> Attendance</a></li>
-            </ul>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="header">
-                <h1 class="page-title">Students</h1>
                 <a href="add_student.php" class="btn btn-primary"><i class="fas fa-plus"></i> Add Student</a>
             </div>
 
@@ -75,7 +61,7 @@ $result = $conn->query($sql);
                     </tbody>
                 </table>
             </div>
-        </main>
+            </main>
     </div>
 </body>
 

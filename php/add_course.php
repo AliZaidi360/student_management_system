@@ -29,20 +29,6 @@ $courses = $conn->query("SELECT * FROM courses");
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <i class="fas fa-graduation-cap"></i> SMS
-            </div>
-            <ul class="nav-links">
-                <li><a href="../index.php"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li><a href="view_students.php"><i class="fas fa-user-graduate"></i> Students</a></li>
-                <li><a href="add_course.php" class="active"><i class="fas fa-book"></i> Courses</a></li>
-                <li><a href="attendance.php"><i class="fas fa-calendar-check"></i> Attendance</a></li>
-            </ul>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="header">
-                <h1 class="page-title">Manage Courses</h1>
             </div>
 
             <div class="card" style="max-width: 600px; margin-bottom: 2rem;">
@@ -81,7 +67,7 @@ $courses = $conn->query("SELECT * FROM courses");
                     </tbody>
                 </table>
             </div>
-        </main>
+            </main>
     </div>
 </body>
 

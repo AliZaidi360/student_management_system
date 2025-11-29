@@ -3,7 +3,7 @@ include 'connection.php';
 
 $id = $_GET['id'];
 $student = $conn->query("SELECT * FROM students WHERE id = $id")->fetch_assoc();
-$courses = $conn->query("SELECT SELECT * FROM courses");
+$courses = $conn->query("SELECT * FROM courses");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
@@ -37,20 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <i class="fas fa-graduation-cap"></i> SMS
-            </div>
-            <ul class="nav-links">
-                <li><a href="../index.php"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li><a href="view_students.php" class="active"><i class="fas fa-user-graduate"></i> Students</a></li>
-                <li><a href="add_course.php"><i class="fas fa-book"></i> Courses</a></li>
-                <li><a href="attendance.php"><i class="fas fa-calendar-check"></i> Attendance</a></li>
-            </ul>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="header">
-                <h1 class="page-title">Update Student</h1>
                 <a href="view_students.php" class="btn btn-secondary"
                     style="background-color: #e2e8f0; color: #1e293b;">Back</a>
             </div>
