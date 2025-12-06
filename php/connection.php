@@ -2,7 +2,7 @@
 $servername = "sql100.byetcluster.com";  // REAL HOST
 $username   = "if0_40601752";
 $password   = "yc0k7298";
-$dbname     = "if0_40601752_studenttms";
+$dbname     = "if0_40601752_studentms";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
