@@ -1,5 +1,4 @@
-
-PRODUCTION Credentials (InfinityFree) - Uncomment when deploying
+<?php
 $servername = "sql100.byetcluster.com";
 $username   = "if0_40601752";
 $password   = "yc0k7298";
