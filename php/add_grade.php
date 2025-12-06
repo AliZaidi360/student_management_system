@@ -39,7 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <i class="fas fa-graduation-cap"></i> SMS
+                <div class="user-profile">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Admin</span>
+                </div>
             </div>
             <ul class="nav-links">
                 <li><a href="../index.php"><i class="fas fa-home"></i> Dashboard</a></li>
