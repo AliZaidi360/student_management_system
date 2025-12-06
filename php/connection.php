@@ -1,8 +1,3 @@
-<?php
-$servername = "localhost"; // Local XAMPP
-$username = "root";
-$password = "";
-$dbname = "student_managment";
 
 PRODUCTION Credentials (InfinityFree) - Uncomment when deploying
 $servername = "sql100.byetcluster.com";
