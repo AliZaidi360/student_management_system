@@ -45,8 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li><a href="../index.php"><i class="fas fa-home"></i> Dashboard</a></li>
                 <li><a href="view_students.php"><i class="fas fa-user-graduate"></i> Students</a></li>
                 <li><a href="add_course.php"><i class="fas fa-book"></i> Courses</a></li>
-                <li><a href="attendance.php"><i class="fas fa-calendar-check"></i> Attendance</a></li>
                 <li><a href="add_grade.php" class="active"><i class="fas fa-star"></i> Grades</a></li>
+                <li><a href="attendance.php"><i class="fas fa-calendar-check"></i> Attendance</a></li>
             </ul>
         </aside>
 
