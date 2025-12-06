@@ -1,6 +1,4 @@
 -- Database: `student_managment`
-CREATE DATABASE IF NOT EXISTS `student_managment`;
-USE `student_managment`;
 
 -- Table structure for table `admin`
 CREATE TABLE IF NOT EXISTS `admin` (

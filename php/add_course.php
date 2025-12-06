@@ -29,7 +29,28 @@ $courses = $conn->query("SELECT * FROM courses");
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
+                <div class="user-profile">
+                    <span>Admin</span>
+                </div>
             </div>
+
+            <ul class="nav-links">
+                <li><a href="../index.php"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="view_students.php"><i class="fas fa-user-graduate"></i> Students</a></li>
+                <li><a href="add_course.php" class="active"><i class="fas fa-book"></i> Courses</a></li>
+                <li><a href="add_grade.php"><i class="fas fa-star"></i> Grades</a></li>
+                <li><a href="attendance.php"><i class="fas fa-calendar-check"></i> Attendance</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <div>
+                    <h1 class="page-title">Manage Courses</h1>
+                    <p style="color: var(--text-secondary);">Add and view courses.</p>
+                </div>
+            </header>
 
             <div class="card" style="max-width: 600px; margin-bottom: 2rem;">
                 <h3>Add New Course</h3>
@@ -67,7 +88,7 @@ $courses = $conn->query("SELECT * FROM courses");
                     </tbody>
                 </table>
             </div>
-            </main>
+        </main>
     </div>
 </body>
 

@@ -36,9 +36,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <a href="view_students.php" class="btn btn-secondary"
-                    style="background-color: #e2e8f0; color: #1e293b;">Back</a>
+                <div class="user-profile">
+                    <span>Admin</span>
+                </div>
             </div>
+
+            <ul class="nav-links">
+                <li><a href="../index.php"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="view_students.php"><i class="fas fa-user-graduate"></i> Students</a></li>
+                <li><a href="add_course.php"><i class="fas fa-book"></i> Courses</a></li>
+                <li><a href="add_grade.php"><i class="fas fa-star"></i> Grades</a></li>
+                <li><a href="attendance.php"><i class="fas fa-calendar-check"></i> Attendance</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <div>
+                    <h1 class="page-title">Add Student</h1>
+                    <p style="color: var(--text-secondary);">Register a new student to the system.</p>
+                </div>
+            </header>
 
             <div class="card" style="max-width: 600px;">
                 <?php if (isset($error)): ?>
@@ -66,10 +85,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <?php endwhile; ?>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Add Student</button>
+                    <div style="display: flex; gap: 1rem;">
+                        <button type="submit" class="btn btn-primary">Add Student</button>
+                        <a href="view_students.php" class="btn btn-outline" style="text-decoration: none;">Cancel</a>
+                    </div>
                 </form>
             </div>
-            </main>
+        </main>
     </div>
 </body>
 
