@@ -1,14 +1,12 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "student_managment";
+$servername = "sql100.infinityfree.com";
+$username = "if0_40601752";
+$password = "yc0k7298";  // your actual MySQL password
+$dbname = "if0_40601752_studenttms"; // EXACT database name
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 ?>
