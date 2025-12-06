@@ -30,43 +30,52 @@ It is developed locally using XAMPP and phpMyAdmin.
 ---
 
 ## 📁 Project Folder Structure
-student_management/
+htdocs/
 │
+├── index.php                # Main dashboard
 ├── css/
-│ └── style.css
-│
+│   └── style.css
 ├── php/
-│ ├── connection.php
-│ ├── add_student.php
-│ ├── view_students.php
-│ ├── update_student.php
-│ ├── delete_student.php
-│ ├── add_course.php
-│ ├── add_grade.php
-│ └── attendance.php
-│
-├── index.php
-│
-├── database.sql
+│   ├── connection.php       # Cloud DB connection
+│   ├── add_student.php
+│   ├── add_course.php
+│   ├── attendance.php
+│   ├── update_student.php
+│   ├── delete_student.php
 │
 └── README.md
 
 
-## 🔌 How to Run the Project
 
-### 1️⃣ Install & Start XAMPP
-Start these services:
-- Apache  
-- MySQL  
+🚀 Running the Project
 
-### 2️⃣ Import the Database
-1. Open **phpMyAdmin**  
-2. Create a database named:  
-   `student_managment`  
-3. Import **database.sql**
+This project is fully deployed online, so no local installation or XAMPP is required.
+All backend PHP files and the MySQL database are hosted on cloud servers.
 
-### 3️⃣ Run the Project
-Open your browser and go to:
+✅ Live Website
+
+You can access the application here:
+
+👉 https://cpsccsufproject.infinityfreeapp.com
+
+The website is always updated with the latest code pushed to GitHub.
+
+🗄️ Database Access (Cloud-Based)
+
+The project uses an online MySQL database hosted on InfinityFree.
+All team members share the same database — no setup required.
+
+Database Features:
+
+Students table
+
+Courses table
+
+Attendance table
+
+Admin login (optional)
+
+All SQL queries inside the project automatically connect to this live database.
 
 
 

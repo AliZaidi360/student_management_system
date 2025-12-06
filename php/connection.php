@@ -1,15 +1,18 @@
 <?php
-$servername = "localhost"; // Keep this as localhost for most hosts including InfinityFree
-// UPDATE THESE WITH YOUR INFINITYFREE CREDENTIALS
-$username = "root";      // Replace with your InfinityFree MySQL Username (e.g., if0_345...)
-$password = "";          // Replace with your InfinityFree MySQL Password (from vPanel)
-$dbname = "student_managment"; // Replace with your InfinityFree Database Name (e.g., if0_345_student_managment)
+$servername = "localhost"; // Local XAMPP
+$username = "root";
+$password = "";
+$dbname = "student_managment";
 
-// Create connection
+// PRODUCTION Credentials (InfinityFree) - Uncomment when deploying
+// $servername = "sql100.byetcluster.com";
+// $username   = "if0_40601752";
+// $password   = "yc0k7298";
+// $dbname     = "if0_40601752_studentms";
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 ?>
