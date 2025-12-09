@@ -30,9 +30,10 @@ $attendance_count = $conn->query("SELECT COUNT(*) as count FROM attendance WHERE
             <ul class="nav-links">
                 <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
                 <li><a href="php/view_students.php"><i class="fas fa-user-graduate"></i> Students</a></li>
-                <li><a href="#"><i class="fas fa-book"></i> Courses</a></li>
-                <li><a href="#"><i class="fas fa-star"></i> Grades</a></li>
+                <li><a href="php/add_course.php"><i class="fas fa-book"></i> Courses</a></li>
+                <li><a href="php/add_grade.php"><i class="fas fa-star"></i> Grades</a></li>
                 <li><a href="php/attendance.php"><i class="fas fa-calendar-check"></i> Attendance</a></li>
+                <li><a href="php/view_attendance.php"><i class="fas fa-list-alt"></i> View Attendance</a></li>
             </ul>
         </aside>
 
