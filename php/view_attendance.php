@@ -17,13 +17,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || isset($_GET['course_id'])) {
                 FROM attendance a 
                 JOIN students s ON a.student_id = s.id 
                 WHERE a.course_id = '$selected_course_id'";
-        
+
         if (!empty($date)) {
             $sql .= " AND a.date = '$date'";
         }
-        
+
         $sql .= " ORDER BY a.date DESC, s.name ASC";
-        
+
         $attendance_records = $conn->query($sql);
     }
 }
@@ -55,7 +55,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || isset($_GET['course_id'])) {
                 <li><a href="add_course.php"><i class="fas fa-book"></i> Courses</a></li>
                 <li><a href="add_grade.php"><i class="fas fa-star"></i> Grades</a></li>
                 <li><a href="attendance.php"><i class="fas fa-calendar-check"></i> Attendance</a></li>
-                <li><a href="view_attendance.php" class="active"><i class="fas fa-list-alt"></i> View Attendance</a></li>
+                <li><a href="view_attendance.php" class="active"><i class="fas fa-list-alt"></i> View Attendance</a>
+                </li>
+                <li><a href="view_grades.php"><i class="fas fa-clipboard-list"></i> View Grades</a></li>
             </ul>
         </aside>
 
@@ -115,13 +117,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || isset($_GET['course_id'])) {
                                                 border-radius: 4px; 
                                                 font-size: 0.875rem; 
                                                 font-weight: 500;
-                                                background-color: <?php 
-                                                    echo $row['status'] == 'Present' ? '#dcfce7' : 
-                                                         ($row['status'] == 'Absent' ? '#fee2e2' : '#fef9c3'); 
+                                                background-color: <?php
+                                                echo $row['status'] == 'Present' ? '#dcfce7' :
+                                                    ($row['status'] == 'Absent' ? '#fee2e2' : '#fef9c3');
                                                 ?>;
-                                                color: <?php 
-                                                    echo $row['status'] == 'Present' ? '#166534' : 
-                                                         ($row['status'] == 'Absent' ? '#991b1b' : '#854d0e'); 
+                                                color: <?php
+                                                echo $row['status'] == 'Present' ? '#166534' :
+                                                    ($row['status'] == 'Absent' ? '#991b1b' : '#854d0e');
                                                 ?>;
                                             ">
                                                 <?php echo $row['status']; ?>

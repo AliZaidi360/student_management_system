@@ -2,24 +2,21 @@
 include 'connection.php';
 
 $courses = $conn->query("SELECT * FROM courses");
-$students = [];
+$grades_records = [];
 $selected_course_id = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['fetch_students'])) {
-        $selected_course_id = $_POST['course_id'];
-        $students = $conn->query("SELECT * FROM students WHERE course_id = $selected_course_id");
-    } elseif (isset($_POST['save_grades'])) {
-        $course_id = $_POST['course_id'];
-        $grades = $_POST['grade']; // Array of student_id => grade
+if ($_SERVER["REQUEST_METHOD"] == "POST" || isset($_GET['course_id'])) {
+    $selected_course_id = $_POST['course_id'] ?? $_GET['course_id'] ?? '';
 
-        foreach ($grades as $student_id => $grade) {
-            if (!empty($grade)) {
-                $sql = "INSERT INTO grades (student_id, course_id, grade) VALUES ('$student_id', '$course_id', '$grade')";
-                $conn->query($sql);
-            }
-        }
-        $success = "Grades recorded successfully!";
+    if (!empty($selected_course_id)) {
+        $sql = "SELECT g.grade, s.name as student_name, c.course_name
+                FROM grades g 
+                JOIN students s ON g.student_id = s.id 
+                JOIN courses c ON g.course_id = c.id
+                WHERE g.course_id = '$selected_course_id'
+                ORDER BY s.name ASC";
+
+        $grades_records = $conn->query($sql);
     }
 }
 ?>
@@ -29,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Grades - Student Management System</title>
+    <title>View Grades - Student Management System</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -40,31 +37,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <aside class="sidebar">
             <div class="logo">
                 <div class="user-profile">
-                    <i class="fas fa-graduation-cap"></i>
                     <span>Admin</span>
                 </div>
             </div>
+
             <ul class="nav-links">
                 <li><a href="../index.php"><i class="fas fa-home"></i> Dashboard</a></li>
                 <li><a href="view_students.php"><i class="fas fa-user-graduate"></i> Students</a></li>
                 <li><a href="add_course.php"><i class="fas fa-book"></i> Courses</a></li>
-                <li><a href="add_grade.php" class="active"><i class="fas fa-star"></i> Grades</a></li>
+                <li><a href="add_grade.php"><i class="fas fa-star"></i> Grades</a></li>
                 <li><a href="attendance.php"><i class="fas fa-calendar-check"></i> Attendance</a></li>
                 <li><a href="view_attendance.php"><i class="fas fa-list-alt"></i> View Attendance</a></li>
-                <li><a href="view_grades.php"><i class="fas fa-clipboard-list"></i> View Grades</a></li>
+                <li><a href="view_grades.php" class="active"><i class="fas fa-clipboard-list"></i> View Grades</a></li>
             </ul>
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
-            <div class="header">
-                <h1 class="page-title">Add Grades</h1>
-            </div>
+            <header class="header">
+                <div>
+                    <h1 class="page-title">View Grades</h1>
+                    <p style="color: var(--text-secondary);">View student grades by course.</p>
+                </div>
+            </header>
 
             <div class="card" style="margin-bottom: 2rem;">
-                <?php if (isset($success)): ?>
-                    <div style="color: green; margin-bottom: 1rem;"><?php echo $success; ?></div>
-                <?php endif; ?>
                 <form method="POST" action="">
                     <div style="display: flex; gap: 1rem; align-items: flex-end;">
                         <div class="form-group" style="margin-bottom: 0; flex: 1;">
@@ -80,42 +77,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <?php endwhile; ?>
                             </select>
                         </div>
-                        <button type="submit" name="fetch_students" class="btn btn-primary">Fetch Students</button>
+                        <button type="submit" class="btn btn-primary">View Grades</button>
                     </div>
                 </form>
             </div>
 
-            <?php if (!empty($students) && $students->num_rows > 0): ?>
+            <?php if (!empty($selected_course_id)): ?>
                 <div class="card">
-                    <form method="POST" action="">
-                        <input type="hidden" name="course_id" value="<?php echo $selected_course_id; ?>">
+                    <?php if ($grades_records && $grades_records->num_rows > 0): ?>
                         <table>
                             <thead>
                                 <tr>
                                     <th>Student Name</th>
+                                    <th>Course</th>
                                     <th>Grade</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php while ($row = $students->fetch_assoc()): ?>
+                                <?php while ($row = $grades_records->fetch_assoc()): ?>
                                     <tr>
-                                        <td><?php echo $row['name']; ?></td>
+                                        <td><?php echo $row['student_name']; ?></td>
+                                        <td><?php echo $row['course_name']; ?></td>
                                         <td>
-                                            <input type="text" name="grade[<?php echo $row['id']; ?>]"
-                                                placeholder="Enter Grade (e.g. A, B+)" style="width: 150px;">
+                                            <span style="
+                                                padding: 0.25rem 0.5rem; 
+                                                border-radius: 4px; 
+                                                font-size: 0.875rem; 
+                                                font-weight: 700;
+                                                background-color: #f3f4f6;
+                                                color: #1f2937;
+                                            ">
+                                                <?php echo $row['grade']; ?>
+                                            </span>
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>
                             </tbody>
                         </table>
-                        <div style="margin-top: 1.5rem; text-align: right;">
-                            <button type="submit" name="save_grades" class="btn btn-primary">Save Grades</button>
-                        </div>
-                    </form>
-                </div>
-            <?php elseif (isset($_POST['fetch_students'])): ?>
-                <div class="card">
-                    <p class="text-center">No students found in this course.</p>
+                    <?php else: ?>
+                        <p class="text-center">No grade records found for this course.</p>
+                    <?php endif; ?>
                 </div>
             <?php endif; ?>
         </main>

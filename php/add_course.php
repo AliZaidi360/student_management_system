@@ -41,6 +41,7 @@ $courses = $conn->query("SELECT * FROM courses");
                 <li><a href="add_grade.php"><i class="fas fa-star"></i> Grades</a></li>
                 <li><a href="attendance.php"><i class="fas fa-calendar-check"></i> Attendance</a></li>
                 <li><a href="view_attendance.php"><i class="fas fa-list-alt"></i> View Attendance</a></li>
+                <li><a href="view_grades.php"><i class="fas fa-clipboard-list"></i> View Grades</a></li>
             </ul>
         </aside>
 

@@ -34,6 +34,7 @@ $attendance_count = $conn->query("SELECT COUNT(*) as count FROM attendance WHERE
                 <li><a href="php/add_grade.php"><i class="fas fa-star"></i> Grades</a></li>
                 <li><a href="php/attendance.php"><i class="fas fa-calendar-check"></i> Attendance</a></li>
                 <li><a href="php/view_attendance.php"><i class="fas fa-list-alt"></i> View Attendance</a></li>
+                <li><a href="php/view_grades.php"><i class="fas fa-clipboard-list"></i> View Grades</a></li>
             </ul>
         </aside>
 
