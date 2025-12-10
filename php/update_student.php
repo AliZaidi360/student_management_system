@@ -1,4 +1,6 @@
 <?php
+include 'session_check.php';
+requireAdmin();
 include 'connection.php';
 
 $id = $_GET['id'];
@@ -37,9 +39,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <a href="view_students.php" class="btn btn-secondary"
-                    style="background-color: #e2e8f0; color: #1e293b;">Back</a>
+                <div class="user-profile">
+                    <span><?php echo htmlspecialchars($_SESSION['username']); ?></span>
+                    <a href="logout.php" style="font-size: 0.875rem; color: var(--text-secondary); text-decoration: none; margin-top: 0.5rem; display: block;">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
             </div>
+
+            <ul class="nav-links">
+                <li><a href="admin_dashboard.php"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="view_students.php" class="active"><i class="fas fa-user-graduate"></i> Students</a></li>
+                <li><a href="add_course.php"><i class="fas fa-book"></i> Courses</a></li>
+                <li><a href="add_grade.php"><i class="fas fa-star"></i> Grades</a></li>
+                <li><a href="attendance.php"><i class="fas fa-calendar-check"></i> Attendance</a></li>
+                <li><a href="view_attendance.php"><i class="fas fa-list-alt"></i> View Attendance</a></li>
+                <li><a href="view_grades.php"><i class="fas fa-clipboard-list"></i> View Grades</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <div>
+                    <h1 class="page-title">Update Student</h1>
+                    <p style="color: var(--text-secondary);">Edit student information.</p>
+                </div>
+                <a href="view_students.php" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Back</a>
+            </header>
 
             <div class="card" style="max-width: 600px;">
                 <?php if (isset($error)): ?>
@@ -48,15 +75,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <form method="POST" action="">
                     <div class="form-group">
                         <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" value="<?php echo $student['name']; ?>" required>
+                        <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($student['name']); ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" value="<?php echo $student['email']; ?>" required>
+                        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($student['email']); ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone</label>
-                        <input type="text" id="phone" name="phone" value="<?php echo $student['phone']; ?>" required>
+                        <input type="text" id="phone" name="phone" value="<?php echo htmlspecialchars($student['phone']); ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="course_id">Course</label>
@@ -64,11 +91,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <option value="">Select Course</option>
                             <?php while ($row = $courses->fetch_assoc()): ?>
                                 <option value="<?php echo $row['id']; ?>" <?php if ($row['id'] == $student['course_id'])
-                                       echo 'selected'; ?>><?php echo $row['course_name']; ?></option>
+                                       echo 'selected'; ?>><?php echo htmlspecialchars($row['course_name']); ?></option>
                             <?php endwhile; ?>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Update Student</button>
+                    <div style="display: flex; gap: 1rem;">
+                        <button type="submit" class="btn btn-primary">Update Student</button>
+                        <a href="view_students.php" class="btn btn-outline" style="text-decoration: none;">Cancel</a>
+                    </div>
                 </form>
             </div>
         </main>

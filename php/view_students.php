@@ -1,4 +1,6 @@
 <?php
+include 'session_check.php';
+requireAdmin();
 include 'connection.php';
 
 // Fetch students with course names
@@ -22,12 +24,15 @@ $result = $conn->query($sql);
         <aside class="sidebar">
             <div class="logo">
                 <div class="user-profile">
-                    <span>Admin</span>
+                    <span><?php echo htmlspecialchars($_SESSION['username']); ?></span>
+                    <a href="logout.php" style="font-size: 0.875rem; color: var(--text-secondary); text-decoration: none; margin-top: 0.5rem; display: block;">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
                 </div>
             </div>
 
             <ul class="nav-links">
-                <li><a href="../index.php"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="admin_dashboard.php"><i class="fas fa-home"></i> Dashboard</a></li>
                 <li><a href="view_students.php" class="active"><i class="fas fa-user-graduate"></i> Students</a></li>
                 <li><a href="add_course.php"><i class="fas fa-book"></i> Courses</a></li>
                 <li><a href="add_grade.php"><i class="fas fa-star"></i> Grades</a></li>

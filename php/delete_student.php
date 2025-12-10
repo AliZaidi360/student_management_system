@@ -1,4 +1,6 @@
 <?php
+include 'session_check.php';
+requireAdmin();
 include 'connection.php';
 
 $id = $_GET['id'];
