@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `attendance` (
 
 -- Insert default admin
 INSERT INTO `admin` (`username`, `password`) VALUES
-('admin', 'admin123');
+('admin', 'admin');
 
 -- Insert sample courses
 INSERT INTO `courses` (`course_name`) VALUES
