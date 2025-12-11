@@ -7,11 +7,11 @@ $student_id = $_SESSION['user_id'];
 $student_name = $_SESSION['student_name'];
 
 // Fetch student's grades
-$grades_query = "SELECT g.grade, c.course_name, g.created_at 
+$grades_query = "SELECT g.grade, c.course_name, g.id 
                  FROM grades g 
                  JOIN courses c ON g.course_id = c.id 
                  WHERE g.student_id = ? 
-                 ORDER BY g.created_at DESC";
+                 ORDER BY g.id DESC";
 $stmt = $conn->prepare($grades_query);
 $stmt->bind_param("i", $student_id);
 $stmt->execute();
@@ -135,7 +135,6 @@ $stats = $stats_result->fetch_assoc();
                             <tr>
                                 <th>Course</th>
                                 <th>Grade</th>
-                                <th>Date</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -154,7 +153,6 @@ $stats = $stats_result->fetch_assoc();
                                             <?php echo htmlspecialchars($grade['grade']); ?>
                                         </span>
                                     </td>
-                                    <td><?php echo date('M d, Y', strtotime($grade['created_at'])); ?></td>
                                 </tr>
                             <?php endwhile; ?>
                         </tbody>
